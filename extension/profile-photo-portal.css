@@ -1,0 +1,14 @@
+@media screen{
+html[data-cui-plus] .cp-photo-wrap:not(:where(.cp-original-ecard,.cp-original-ecard *)){display:inline-block;position:relative;vertical-align:top;line-height:0}
+html[data-cui-plus] .cp-photo-wrap .cp-custom-photo:not(:where(.cp-original-ecard,.cp-original-ecard *)){position:absolute;inset:0;width:100%;height:100%;border:1px solid var(--cp-border);border-radius:14px;box-sizing:border-box;pointer-events:none;visibility:hidden}
+html[data-cui-plus] .cp-photo-wrap.cp-photo-ready .cp-custom-photo:not(:where(.cp-original-ecard,.cp-original-ecard *)){visibility:visible}
+html[data-cui-plus] .cp-photo-wrap.cp-photo-ready #stImg:not(:where(.cp-original-ecard,.cp-original-ecard *)){opacity:0!important}
+}
+@media screen{
+html[data-cui-plus] #main-content #divStudentDetails #stImg:not(:where(.cp-original-ecard,.cp-original-ecard *)),
+html[data-cui-plus] .cp-photo-wrap .cp-custom-photo:not(:where(.cp-original-ecard,.cp-original-ecard *)){
+ border:var(--cp-photo-border-width,1px) var(--cp-photo-border-style,solid) var(--cp-photo-border,var(--cp-border))!important;
+ border-radius:var(--cp-photo-radius,14px)!important;box-sizing:border-box!important;padding:0!important;
+}
+}
+@media print{.cp-custom-photo:not(:where(.cp-original-ecard,.cp-original-ecard *)){display:none!important}.cp-photo-wrap #stImg:not(:where(.cp-original-ecard,.cp-original-ecard *)){opacity:1!important}}

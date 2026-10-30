@@ -1,0 +1,13 @@
+{
+  "name": "cui-portal-plus",
+  "private": true,
+  "version": "0.5.6",
+  "scripts": {
+    "demo": "python3 -m http.server 4173",
+    "test": "node --test tests/settings.test.cjs tests/content.test.cjs",
+    "test:browser": "node tests/run-browser.cjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.56.0"
+  }
+}

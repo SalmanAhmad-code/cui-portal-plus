@@ -1,0 +1,955 @@
+@media screen {
+  html[data-cui-plus]
+    #main-content
+    .cp-table-scroll:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    max-width: 100%;
+    overflow-x: auto;
+    margin: 20px 0;
+    border-radius: var(--cp-radius);
+    border: 1px solid var(--cp-border);
+  }
+  html[data-cui-plus]
+    #main-content
+    table.cp-data-grid:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    width: 100% !important;
+    margin: 0 !important;
+    border: 0 !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    font: 400 var(--cp-size)/1.5 var(--cp-font) !important;
+    background: transparent !important;
+  }
+  html[data-cui-plus]
+    #main-content
+    table.cp-data-grid
+    > :is(tbody, thead)
+    > tr
+    > :is(td, th):not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    padding: 14px 16px !important;
+    border: 0 !important;
+    border-bottom: 1px solid var(--cp-border) !important;
+    color: var(--cp-text) !important;
+    vertical-align: top !important;
+  }
+  html[data-cui-plus]
+    #main-content
+    table.cp-data-grid
+    > tbody
+    > tr
+    > td:not([bgcolor]):not([style*="background" i]):not(
+      :where(.cp-original-ecard, .cp-original-ecard *)
+    ) {
+    background: var(--cp-table, var(--cp-surface)) !important;
+  }
+  html[data-cui-plus]
+    #main-content
+    table.cp-data-grid
+    > tbody
+    > tr:nth-child(even)
+    > td:not([bgcolor]):not([style*="background" i]):not(
+      :where(.cp-original-ecard, .cp-original-ecard *)
+    ) {
+    background: var(--cp-table-alt, var(--cp-soft)) !important;
+  }
+  html[data-cui-plus]
+    #main-content
+    table.cp-data-grid
+    > :is(tbody, thead)
+    > tr.cp-grid-head
+    > :is(td, th):not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    background: var(--cp-table-header, var(--cp-soft)) !important;
+    color: var(--cp-text) !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    text-align: left !important;
+  }
+  html[data-cui-plus]
+    #main-content
+    table.cp-data-grid
+    > :is(tbody, thead)
+    > tr.cp-grid-section
+    > :is(td, th):not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    background: var(--cp-header, var(--cp-surface)) !important;
+    color: var(--cp-text) !important;
+    font: 600 17px var(--cp-heading) !important;
+    padding: 20px !important;
+    text-align: left !important;
+  }
+  html[data-cui-plus][data-cui-fade-table]
+    #main-content
+    table.cp-data-grid
+    > tbody
+    > tr
+    > td:not([bgcolor]):not([style*="background" i]):not(
+      :where(.cp-original-ecard, .cp-original-ecard *)
+    ) {
+    background: color-mix(
+      in srgb,
+      var(--cp-table, var(--cp-surface)) var(--cp-table-opacity),
+      transparent
+    ) !important;
+  }
+  html[data-cui-plus][data-cui-fade-table]
+    #main-content
+    table.cp-data-grid
+    > tbody
+    > tr:nth-child(even)
+    > td:not([bgcolor]):not([style*="background" i]):not(
+      :where(.cp-original-ecard, .cp-original-ecard *)
+    ) {
+    background: color-mix(
+      in srgb,
+      var(--cp-table-alt, var(--cp-soft)) var(--cp-table-opacity),
+      transparent
+    ) !important;
+  }
+  html[data-cui-plus][data-cui-fade-header]
+    #main-content
+    table.cp-data-grid
+    > :is(tbody, thead)
+    > tr.cp-grid-section
+    > :is(td, th):not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    background: color-mix(
+      in srgb,
+      var(--cp-header, var(--cp-surface)) var(--cp-header-opacity),
+      transparent
+    ) !important;
+  }
+  html[data-cui-plus]
+    #main-content
+    .cp-file-drop:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    margin: 12px 0;
+    padding: 24px;
+    border: 1px dashed var(--cp-border);
+    border-radius: var(--cp-radius);
+    background: var(--cp-soft);
+    color: var(--cp-text);
+    max-width: 100%;
+    box-sizing: border-box;
+    text-align: left;
+  }
+  html[data-cui-plus]
+    #main-content
+    .cp-file-drop
+    > strong:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    font: 600 18px var(--cp-heading);
+  }
+  html[data-cui-plus]
+    #main-content
+    .cp-file-drop
+    > p:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    font: 400 13px/1.6 var(--cp-font);
+    color: var(--cp-muted);
+    margin: 8px 0 16px;
+  }
+  html[data-cui-plus]
+    #main-content
+    .cp-file-drop
+    input[type="file"]:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    width: 100% !important;
+    max-width: 100%;
+    padding: 12px !important;
+  }
+  html[data-cui-plus]
+    #main-content
+    .cp-file-drop.cp-dragging:not(
+      :where(.cp-original-ecard, .cp-original-ecard *)
+    ) {
+    border: 2px solid var(--cp-accent);
+    background: color-mix(in srgb, var(--cp-accent) 12%, var(--cp-surface));
+  }
+  html[data-cui-plus]
+    #main-content
+    .cp-file-preview:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    margin-top: 16px;
+    color: var(--cp-muted);
+    font-size: 12px;
+    overflow-wrap: anywhere;
+  }
+  html[data-cui-plus]
+    #main-content
+    .cp-file-item:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 14px;
+    border: 1px solid var(--cp-border);
+    border-radius: 10px;
+    background: var(--cp-surface);
+  }
+  html[data-cui-plus]
+    #main-content
+    .cp-file-preview
+    img:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    display: block;
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 220px;
+    border-radius: 8px;
+    margin-top: 10px;
+  }
+  html[data-cui-plus]
+    #main-content
+    .cp-timetable:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    min-width: 1050px !important;
+    table-layout: fixed;
+  }
+  html[data-cui-plus]
+    #main-content
+    .cp-timetable
+    tr
+    > td:first-child:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    width: 105px;
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    font-weight: 600 !important;
+    background: var(--cp-table-header, var(--cp-soft)) !important;
+  }
+  html[data-cui-plus]
+    #main-content
+    .cp-timetable
+    .cp-grid-head:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+  html[data-cui-plus]
+    #main-content
+    .cp-timetable
+    tr
+    > td:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    min-height: 80px;
+    padding: 10px !important;
+  }
+  html[data-cui-plus]
+    #main-content
+    .cp-class-slot:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    padding: 14px 12px;
+    border: 1px solid var(--cp-border);
+    border-left: 3px solid var(--cp-accent);
+    border-radius: 10px;
+    background: var(--cp-surface);
+    font: 400 13px/1.6 var(--cp-font);
+    overflow-wrap: anywhere;
+    min-height: 82px;
+  }
+  html[data-cui-plus]
+    #main-content
+    :is(.cp-notice-panel, .cp-datesheet-page .notification):not(
+      :where(.cp-original-ecard, .cp-original-ecard *)
+    ) {
+    padding: 24px !important;
+    margin: 20px 0 !important;
+    border: 1px solid var(--cp-border) !important;
+    border-left: 3px solid var(--cp-accent) !important;
+    border-radius: var(--cp-radius) !important;
+    background: var(--cp-notice, var(--cp-soft)) !important;
+    color: var(--cp-text) !important;
+    text-align: left !important;
+    box-sizing: border-box !important;
+    max-width: 100% !important;
+  }
+  html[data-cui-plus]
+    #main-content
+    .cp-notice-panel
+    :is(h1, h2, h3, h4):not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    font: 600 22px/1.4 var(--cp-heading) !important;
+    letter-spacing: -0.4px !important;
+    margin: 0 0 18px !important;
+    padding: 0 0 16px !important;
+    border-bottom: 1px solid var(--cp-border) !important;
+    text-align: left !important;
+  }
+  html[data-cui-plus]
+    #main-content
+    .cp-notice-panel
+    p:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    font: 400 var(--cp-size)/1.7 var(--cp-font) !important;
+    margin: 14px 0 !important;
+    text-align: left !important;
+  }
+  html[data-cui-plus][data-cui-fade-notice]
+    #main-content
+    .cp-notice-panel:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    background: color-mix(
+      in srgb,
+      var(--cp-notice, var(--cp-soft)) var(--cp-notice-opacity),
+      transparent
+    ) !important;
+  }
+  html[data-cui-plus]
+    #main-content.cp-datesheet-page
+    :is(h1, h2, h3):not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    text-align: left !important;
+    font-family: var(--cp-heading) !important;
+  }
+  html[data-cui-plus]
+    #main-content.cp-datesheet-page
+    .cp-data-grid
+    span:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    color: var(--cp-text) !important;
+  }
+  html[data-cui-plus]
+    #main-content
+    .cp-result-summary-panel:not(
+      :where(.cp-original-ecard, .cp-original-ecard *)
+    ) {
+    margin: 20px 0;
+    border: var(--cp-result-border-width, 1px) solid
+      var(--cp-result-border, var(--cp-border));
+    border-radius: var(--cp-radius);
+    background: var(--cp-surface);
+    padding: 12px;
+  }
+  html[data-cui-plus][data-cui-fade-result]
+    #main-content
+    .cp-result-summary-panel:not(
+      :where(.cp-original-ecard, .cp-original-ecard *)
+    ) {
+    background: color-mix(
+      in srgb,
+      var(--cp-surface) var(--cp-result-opacity),
+      transparent
+    );
+  }
+  html[data-cui-plus]
+    #main-content
+    table.cp-result-summary:not(
+      :where(.cp-original-ecard, .cp-original-ecard *)
+    ) {
+    width: 100% !important;
+    margin: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    border-collapse: separate !important;
+    border-spacing: 12px !important;
+  }
+  html[data-cui-plus]
+    #main-content
+    table.cp-result-summary
+    :is(tr, td):not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    border: 0 !important;
+    background: transparent !important;
+    color: var(--cp-text) !important;
+    font: 600 15px/1.6 var(--cp-font) !important;
+    text-align: left !important;
+    padding: 12px 18px !important;
+  }
+  html[data-cui-plus]
+    #main-content
+    .cp-contact-settings
+    table:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    width: 100% !important;
+    margin: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+  }
+  html[data-cui-plus]
+    #main-content
+    .cp-contact-settings
+    .cp-field-row:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    display: grid !important;
+    grid-template-columns: 180px minmax(0, 1fr);
+    gap: 18px;
+    padding: 22px 24px;
+    border-bottom: 1px solid var(--cp-border);
+    align-items: center;
+  }
+  html[data-cui-plus]
+    #main-content
+    .cp-contact-settings
+    .cp-field-row
+    > td:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    display: block !important;
+    width: auto !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    color: var(--cp-text) !important;
+  }
+  html[data-cui-plus]
+    #main-content
+    .cp-contact-settings
+    .cp-field-row
+    > .cp-field-empty:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    display: none !important;
+  }
+  html[data-cui-plus]
+    #main-content
+    .cp-field-controls:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    color: var(--cp-muted);
+    font-size: 12px;
+  }
+  html[data-cui-plus]
+    #main-content
+    .cp-field-controls
+    :is(input, select, textarea):not(
+      :where(.cp-original-ecard, .cp-original-ecard *)
+    ) {
+    min-height: 42px;
+    max-width: 100% !important;
+    width: auto !important;
+    min-width: 150px;
+    flex: 1 1 180px;
+    padding: 10px 12px !important;
+  }
+  html[data-cui-plus]
+    #main-content
+    .cp-field-controls
+    input[maxlength="4"]:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    flex: 0 1 100px;
+    min-width: 70px;
+  }
+  html[data-cui-plus]
+    #main-content
+    .cp-contact-settings
+    :is(input[type="submit"], input[type="button"], button):not(
+      :where(.cp-original-ecard, .cp-original-ecard *)
+    ) {
+    margin: 16px 8px 20px 20px !important;
+  }
+  html[data-cui-plus]
+    #main-content
+    .cp-project-browser:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    padding: 22px 0;
+  }
+  html[data-cui-plus]
+    #main-content
+    .cp-project-toolbar:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 22px;
+  }
+  html[data-cui-plus]
+    #main-content
+    .cp-project-toolbar
+    input:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    flex: 1 1 250px;
+    min-height: 44px;
+  }
+  html[data-cui-plus]
+    #main-content
+    .cp-project-toolbar
+    span:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    color: var(--cp-muted);
+    font-size: 13px;
+  }
+  html[data-cui-plus]
+    #main-content
+    .cp-project-grid:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 18px;
+  }
+  html[data-cui-plus]
+    #main-content
+    .cp-project-card:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    padding: 22px;
+    border: 1px solid var(--cp-border);
+    border-radius: var(--cp-radius);
+    background: var(--cp-surface);
+    color: var(--cp-text);
+    min-width: 0;
+  }
+  html[data-cui-plus]
+    #main-content
+    .cp-project-card
+    h3:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    font: 600 20px/1.4 var(--cp-heading) !important;
+    margin: 0 0 14px !important;
+    padding: 0 !important;
+  }
+  html[data-cui-plus]
+    #main-content
+    .cp-project-excerpt:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    font: 400 13px/1.7 var(--cp-font);
+    color: var(--cp-muted);
+  }
+  html[data-cui-plus]
+    #main-content
+    .cp-project-card
+    summary:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    font: 600 13px var(--cp-font);
+    cursor: pointer;
+    color: var(--cp-accent-text, var(--cp-accent));
+    padding: 12px 0;
+  }
+  html[data-cui-plus]
+    #main-content
+    .cp-project-field:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    border-top: 1px solid var(--cp-border);
+    padding: 12px 0;
+    font: 400 13px/1.7 var(--cp-font);
+    overflow-wrap: anywhere;
+  }
+  html[data-cui-plus]
+    #main-content
+    .cp-project-field
+    h4:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    font-size: 11px !important;
+    color: var(--cp-muted) !important;
+    margin: 0 0 8px !important;
+    padding: 0 !important;
+  }
+  html[data-cui-plus]
+    #main-content
+    .cp-project-pagination:not(
+      :where(.cp-original-ecard, .cp-original-ecard *)
+    ) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin: 24px 0;
+  }
+  html[data-cui-plus]
+    #main-content
+    .cp-project-card[hidden]:not(
+      :where(.cp-original-ecard, .cp-original-ecard *)
+    ) {
+    display: none !important;
+  }
+  @media (max-width: 650px) {
+    html[data-cui-plus]
+      #main-content
+      .cp-contact-settings
+      .cp-field-row:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+      grid-template-columns: 1fr;
+      gap: 10px;
+      padding: 18px;
+    }
+    html[data-cui-plus]
+      #main-content
+      .cp-project-grid:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+      grid-template-columns: 1fr;
+    }
+    html[data-cui-plus]
+      #main-content
+      table.cp-result-summary
+      :is(tbody, tr, td):not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+      display: block;
+      width: 100% !important;
+    }
+  }
+}
+.cp-project-original:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+  display: none !important;
+}
+@media print {
+  .cp-project-toolbar:not(:where(.cp-original-ecard, .cp-original-ecard *)),
+  .cp-project-pagination:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    display: none !important;
+  }
+  .cp-project-card:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    break-inside: avoid;
+  }
+  .cp-project-card[hidden]:not(
+      :where(.cp-original-ecard, .cp-original-ecard *)
+    ) {
+    display: block !important;
+  }
+}
+
+@media screen {
+  html[data-cui-plus]
+    #main-content
+    table.cp-upload-table:not(
+      :where(.cp-original-ecard, .cp-original-ecard *)
+    ) {
+    width: 100% !important;
+    background: transparent !important;
+    border: 0 !important;
+  }
+  html[data-cui-plus]
+    #main-content
+    table.cp-upload-table
+    > tbody
+    > tr
+    > td:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    padding: 18px 20px !important;
+    border: 0 !important;
+    border-bottom: 1px solid var(--cp-border) !important;
+    background: transparent !important;
+    color: var(--cp-text) !important;
+  }
+  html[data-cui-plus]
+    #main-content
+    table.cp-upload-table
+    > tbody
+    > tr
+    > td:first-child:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    font-weight: 600 !important;
+    width: 180px;
+  }
+  html[data-cui-plus]
+    #main-content
+    .cp-project-card:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    background: color-mix(
+      in srgb,
+      var(--cp-surface) var(--cp-card-opacity, 100%),
+      transparent
+    );
+  }
+  html[data-cui-plus][data-cui-glass]
+    #main-content
+    .cp-project-card:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    backdrop-filter: blur(var(--cp-glass-blur));
+  }
+}
+
+@media screen {
+  html[data-cui-plus]
+    #main-content
+    table.cp-score-track:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    width: 100% !important;
+    border: 0 !important;
+    border-spacing: 0 !important;
+    border-collapse: collapse !important;
+    background: var(--cp-score-track, var(--cp-soft)) !important;
+    border-radius: var(--cp-score-radius) !important;
+    overflow: hidden;
+  }
+  html[data-cui-plus]
+    #main-content
+    table.cp-score-track
+    :is(tr, td):not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    border: 0 !important;
+    padding: 0 !important;
+    height: var(--cp-score-height) !important;
+    line-height: var(--cp-score-height) !important;
+  }
+  html[data-cui-plus]
+    #main-content
+    table.cp-score-track
+    td:not(.cp-score-fill):not(
+      :where(.cp-original-ecard, .cp-original-ecard *)
+    ) {
+    background: transparent !important;
+  }
+  html[data-cui-plus][data-cui-score-override]
+    #main-content
+    table.cp-score-track
+    .cp-score-fill:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    background: var(--cp-score-fill, var(--cp-accent)) !important;
+  }
+}
+
+@media screen {
+  html[data-cui-plus][data-cui-fade-table]
+    #main-content
+    table.cp-data-grid
+    > :is(tbody, thead)
+    > tr.cp-grid-head
+    > :is(td, th):not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    background: color-mix(
+      in srgb,
+      var(--cp-table-header, var(--cp-soft)) var(--cp-table-opacity),
+      transparent
+    ) !important;
+  }
+  html[data-cui-plus][data-cui-fade-field]
+    #main-content
+    :is(.cp-file-drop, .cp-file-item):not(
+      :where(.cp-original-ecard, .cp-original-ecard *)
+    ) {
+    background: color-mix(
+      in srgb,
+      var(--cp-input, var(--cp-surface)) var(--cp-field-opacity),
+      transparent
+    );
+  }
+}
+
+/* Clean weekly grid: flat cells, no nested card backgrounds. */
+@media screen {
+  html[data-cui-plus]
+    #main-content
+    table.cp-timetable.cp-data-grid:not(
+      :where(.cp-original-ecard, .cp-original-ecard *)
+    ) {
+    width: 100% !important;
+    min-width: 1280px !important;
+    table-layout: fixed !important;
+    border-collapse: collapse !important;
+    border: 1px solid var(--cp-border) !important;
+  }
+  html[data-cui-plus]
+    #main-content
+    table.cp-timetable.cp-data-grid
+    tr
+    > :is(td, th):not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    padding: 18px 16px !important;
+    vertical-align: top !important;
+    border: 1px solid var(--cp-border) !important;
+    line-height: 1.5 !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+    background: var(--cp-table, var(--cp-surface)) !important;
+    color: var(--cp-text) !important;
+  }
+  html[data-cui-plus]
+    #main-content
+    table.cp-timetable.cp-data-grid
+    tr
+    > :is(td, th):first-child:not(
+      :where(.cp-original-ecard, .cp-original-ecard *)
+    ) {
+    width: 112px !important;
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    font-weight: 600 !important;
+    background: var(--cp-table, var(--cp-surface)) !important;
+    vertical-align: middle !important;
+  }
+  html[data-cui-plus]
+    #main-content
+    table.cp-timetable.cp-data-grid
+    tr.cp-grid-head
+    > :is(td, th):not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    background: var(--cp-table-header, var(--cp-soft)) !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    white-space: nowrap !important;
+    padding: 16px !important;
+    vertical-align: middle !important;
+  }
+  html[data-cui-plus]
+    #main-content
+    table.cp-timetable.cp-data-grid
+    .cp-class-slot:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    position: relative;
+    padding: 0 0 0 14px !important;
+    margin: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    min-height: 0 !important;
+    font: 400 12px/1.6 var(--cp-font) !important;
+    color: var(--cp-muted) !important;
+    overflow-wrap: normal !important;
+    word-break: normal !important;
+  }
+  html[data-cui-plus]
+    #main-content
+    table.cp-timetable.cp-data-grid
+    .cp-class-slot:not(
+      :where(.cp-original-ecard, .cp-original-ecard *)
+    )::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 6px;
+    height: 6px;
+    background: var(--cp-accent);
+    border-radius: 50%;
+  }
+  html[data-cui-plus]
+    #main-content
+    table.cp-timetable.cp-data-grid
+    .cp-class-title:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    line-height: 1.5 !important;
+    color: var(--cp-text) !important;
+  }
+  html[data-cui-plus]
+    #main-content
+    table.cp-timetable.cp-data-grid
+    .cp-class-slot
+    :is(a, font):not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    color: inherit !important;
+    font: inherit !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+  }
+  html[data-cui-plus]
+    #main-content
+    table.cp-timetable.cp-data-grid
+    .cp-week-merged:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    display: none !important;
+  }
+  html[data-cui-plus]
+    #main-content
+    table.cp-timetable.cp-data-grid
+    :is(.cp-week-gap, .cp-week-empty):not(
+      :where(.cp-original-ecard, .cp-original-ecard *)
+    ) {
+    display: block;
+    color: var(--cp-muted) !important;
+    font-size: 12px !important;
+    text-align: center;
+    padding: 12px 0;
+  }
+  html[data-cui-plus][data-cui-fade-table]
+    #main-content
+    table.cp-timetable.cp-data-grid
+    tr
+    > :is(td, th):not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    background: color-mix(
+      in srgb,
+      var(--cp-table, var(--cp-surface)) var(--cp-table-opacity),
+      transparent
+    ) !important;
+  }
+  html[data-cui-plus][data-cui-fade-table]
+    #main-content
+    table.cp-timetable.cp-data-grid
+    tr.cp-grid-head
+    > :is(td, th):not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    background: color-mix(
+      in srgb,
+      var(--cp-table-header, var(--cp-soft)) var(--cp-table-opacity),
+      transparent
+    ) !important;
+  }
+}
+@media print {
+  .cp-timetable
+    .cp-week-merged:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    display: none !important;
+  }
+  .cp-timetable
+    .cp-class-slot:not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    padding: 0 !important;
+    border: 0 !important;
+    background: none !important;
+  }
+}
+@media screen {
+  html[data-cui-plus]
+    #main-content.cp-timetable-page
+    table.cp-timetable.cp-data-grid
+    > tbody
+    > tr:not(.cp-grid-head):nth-child(n)
+    > :is(td, th):not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    background: var(--cp-table, var(--cp-surface)) !important;
+  }
+  html[data-cui-plus][data-cui-fade-table]
+    #main-content.cp-timetable-page
+    table.cp-timetable.cp-data-grid
+    > tbody
+    > tr:not(.cp-grid-head):nth-child(n)
+    > :is(td, th):not(:where(.cp-original-ecard, .cp-original-ecard *)) {
+    background: color-mix(
+      in srgb,
+      var(--cp-table, var(--cp-surface)) var(--cp-table-opacity),
+      transparent
+    ) !important;
+  }
+}
+
+/* Timetable background follows Cards & containers controls. */
+@media screen {
+  /* Avoid a second painted background behind the grid. */
+  html[data-cui-plus]
+    #main-content.cp-timetable-page
+    .content-box:has(table.cp-timetable) {
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  /* One background owner: the scroll wrapper. */
+  html[data-cui-plus]
+    #main-content.cp-timetable-page
+    .cp-table-scroll:has(> table.cp-timetable) {
+    background: color-mix(
+      in srgb,
+      var(--cp-surface) var(--cp-card-opacity, 100%),
+      transparent
+    ) !important;
+  }
+
+  /* Remove independently painted table layers. */
+  html[data-cui-plus]
+    #main-content.cp-timetable-page
+    .cp-table-scroll
+    > table.cp-timetable.cp-data-grid,
+  html[data-cui-plus]
+    #main-content.cp-timetable-page
+    .cp-table-scroll
+    > table.cp-timetable.cp-data-grid
+    > :is(thead, tbody, tfoot),
+  html[data-cui-plus]
+    #main-content.cp-timetable-page
+    .cp-table-scroll
+    > table.cp-timetable.cp-data-grid
+    > :is(thead, tbody, tfoot)
+    > tr {
+    background: transparent !important;
+  }
+
+  /* Strong enough to beat v0.5.6 row/opacity overrides. */
+  html[data-cui-plus]
+    #main-content.cp-timetable-page
+    .cp-table-scroll
+    > table.cp-timetable.cp-data-grid
+    > :is(thead, tbody, tfoot)
+    > tr:nth-child(n)
+    > :is(td, th):not(.cp-week-merged) {
+    background: transparent !important;
+  }
+
+  /* Transparent sticky cells overlap text when scrolling.
+     Use normal positioning for the fully transparent grid. */
+  html[data-cui-plus]
+    #main-content.cp-timetable-page
+    .cp-table-scroll
+    > table.cp-timetable.cp-data-grid
+    tr.cp-grid-head,
+  html[data-cui-plus]
+    #main-content.cp-timetable-page
+    .cp-table-scroll
+    > table.cp-timetable.cp-data-grid
+    tr
+    > :is(td, th):first-child {
+    position: static !important;
+  }
+}
+
+@media screen {
+  html[data-cui-plus] #main-content.cp-timetable-page .content-box-content {
+    padding-top: 0 !important;
+  }
+
+  html[data-cui-plus] #main-content.cp-timetable-page .cp-table-scroll {
+    margin-top: 0 !important;
+  }
+  html[data-cui-plus] #main-content.cp-timetable-page .content-box > br {
+    display: none !important;
+  }
+  /* Notification hidden ho to uska empty wrapper bhi hide karo */
+  html[data-cui-plus]
+    #main-content
+    .cp-table-scroll:has(#DataContent_dvMessage[style*="display: none"]) {
+    display: none !important;
+  }
+
+  /* Sirf Course Summary container ke extra breaks hatao */
+  html[data-cui-plus]
+    #main-content
+    .content-box:has(#DataContent_gvCourseSummary)
+    > br {
+    display: none !important;
+  }
+
+  /* Actual table ke upar extra margin hatao */
+  html[data-cui-plus]
+    #main-content
+    .cp-table-scroll:has(> #DataContent_gvCourseSummary) {
+    margin-top: 0 !important;
+  }
+}

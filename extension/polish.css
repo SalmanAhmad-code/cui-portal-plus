@@ -1,0 +1,189 @@
+@media screen {
+/* One action system, including original unclassed print/download buttons. */
+html[data-cui-plus] :is(#main-content,#login-content,#profile-links) :is(button,input[type=submit],input[type=button],a.button,a.btn,[role=button],.cp-sidebar-actions>a):not(.close):not(:where(.cp-original-ecard,.cp-original-ecard *)),
+html[data-cui-plus] #login-content #btn_StudentSignIn.cp-auth-submit:not(:where(.cp-original-ecard,.cp-original-ecard *)) {
+ background:var(--cp-accent)!important;color:var(--cp-button-text,#fff)!important;
+ border:1px solid var(--cp-button-border,var(--cp-accent))!important;border-radius:var(--cp-button-radius)!important;
+ padding:var(--cp-button-pad) calc(var(--cp-button-pad) * 1.5)!important;
+ font:600 var(--cp-size)/1.35 var(--cp-font)!important;min-height:38px;cursor:pointer;box-shadow:none!important;text-decoration:none!important;
+}
+html[data-cui-plus][data-cui-button-style] #login-content #btn_StudentSignIn.cp-auth-submit:hover:not(:where(.cp-original-ecard,.cp-original-ecard *)),html[data-cui-plus][data-cui-button-style] :is(#main-content,#login-content,#profile-links) :is(button,input[type=submit],input[type=button],a.button,a.btn,.cp-sidebar-actions>a):not(.close):hover:not(:where(.cp-original-ecard,.cp-original-ecard *)) {background:var(--cp-button-hover,color-mix(in srgb,var(--cp-accent) 85%,var(--cp-text)))!important;color:var(--cp-button-text,#fff)!important}
+html[data-cui-plus][data-cui-button-style=outline] :is(#main-content,#login-content,#profile-links) :is(button,input[type=submit],input[type=button],a.button,a.btn,.cp-sidebar-actions>a):not(.close):not(:where(.cp-original-ecard,.cp-original-ecard *)),
+html[data-cui-plus][data-cui-button-style=outline] #login-content #btn_StudentSignIn.cp-auth-submit:not(:where(.cp-original-ecard,.cp-original-ecard *)){background:transparent!important;color:var(--cp-button-text,var(--cp-text))!important}
+html[data-cui-plus][data-cui-button-style=soft] :is(#main-content,#login-content,#profile-links) :is(button,input[type=submit],input[type=button],a.button,a.btn,.cp-sidebar-actions>a):not(.close):not(:where(.cp-original-ecard,.cp-original-ecard *)),
+html[data-cui-plus][data-cui-button-style=soft] #login-content #btn_StudentSignIn.cp-auth-submit:not(:where(.cp-original-ecard,.cp-original-ecard *)){background:color-mix(in srgb,var(--cp-accent) 18%,var(--cp-surface))!important;color:var(--cp-button-text,var(--cp-text))!important}
+/* A route-derived selected state wins over SIS's stale Dashboard.current. */
+html[data-cui-plus] #sidebar #main-nav.cp-has-active a.current:not(.cp-nav-active):not(.cp-nav-parent):not(:where(.cp-original-ecard,.cp-original-ecard *)){background:transparent!important;background-image:none!important;color:var(--cp-sidebar-text,var(--cp-text))!important;border-color:transparent!important}
+html[data-cui-plus] #sidebar #main-nav.cp-has-active a.cp-nav-active:not(:where(.cp-original-ecard,.cp-original-ecard *)),
+html[data-cui-plus] #sidebar #main-nav.cp-has-active a.cp-nav-parent:not(:where(.cp-original-ecard,.cp-original-ecard *)){background:var(--cp-nav-active,var(--cp-accent))!important;background-image:none!important;color:var(--cp-nav-active-text,var(--cp-button-text,#fff))!important;border:1px solid transparent!important;border-radius:var(--cp-radius)!important;font-weight:650!important}
+html[data-cui-plus] #sidebar #main-nav .cp-customizer-link:not(:where(.cp-original-ecard,.cp-original-ecard *)){color:var(--cp-sidebar-text,var(--cp-text))!important;font-family:var(--cp-font)!important;font-size:var(--cp-size)!important}
+html[data-cui-plus] #sidebar #main-nav a:not(:where(.cp-original-ecard,.cp-original-ecard *)){line-height:1.5!important;overflow-wrap:anywhere}
+html[data-cui-plus] #sidebar .cp-university-name:not(:where(.cp-original-ecard,.cp-original-ecard *)),html[data-cui-plus] #sidebar #profile-links:not(:where(.cp-original-ecard,.cp-original-ecard *)){border-color:var(--cp-border)!important}
+/* Expanded profile: original photo, original cells and links stay in place. */
+html[data-cui-plus] .cp-profile-card:not(:where(.cp-original-ecard,.cp-original-ecard *)){margin:0 0 28px;border:1px solid var(--cp-border);border-radius:var(--cp-radius);overflow:hidden;background:var(--cp-surface)}
+html[data-cui-plus][data-cui-glass] .cp-profile-card:not(:where(.cp-original-ecard,.cp-original-ecard *)){background:color-mix(in srgb,var(--cp-surface) var(--cp-glass-opacity),transparent);backdrop-filter:blur(var(--cp-glass-blur))}
+html[data-cui-plus] .cp-profile-heading:not(:where(.cp-original-ecard,.cp-original-ecard *)){display:flex;gap:14px;align-items:center;padding:22px 24px;border-bottom:1px solid var(--cp-border);color:var(--cp-text)}
+html[data-cui-plus] .cp-profile-heading>svg:not(:where(.cp-original-ecard,.cp-original-ecard *)){width:26px;height:26px;flex:none;color:var(--cp-accent-text,var(--cp-accent))}
+html[data-cui-plus] .cp-profile-heading h2:not(:where(.cp-original-ecard,.cp-original-ecard *)){font:600 20px/1.3 var(--cp-heading);color:var(--cp-text)!important;margin:0!important;padding:0!important}
+html[data-cui-plus] .cp-profile-heading p:not(:where(.cp-original-ecard,.cp-original-ecard *)){font:400 12px/1.5 var(--cp-font);color:var(--cp-muted);margin:5px 0 0}
+html[data-cui-plus] .cp-profile-badge:not(:where(.cp-original-ecard,.cp-original-ecard *)){margin-left:auto;padding:6px 10px;border:1px solid var(--cp-border);border-radius:30px;font:500 9px var(--cp-font);letter-spacing:1px;color:var(--cp-muted)}
+html[data-cui-plus] .cp-profile-card #divStudentDetails:not(:where(.cp-original-ecard,.cp-original-ecard *)){background:transparent!important;border:0!important;margin:0!important;padding:24px!important}
+html[data-cui-plus] .cp-profile-card #stImg:not(:where(.cp-original-ecard,.cp-original-ecard *)){width:96px!important;height:112px!important;padding:4px!important;border-radius:14px!important;object-fit:cover}
+html[data-cui-plus] .cp-profile-card .studentdetails table.Grid:not(:where(.cp-original-ecard,.cp-original-ecard *)){border:0!important;margin:0!important;min-width:0!important;border-collapse:separate!important;border-spacing:0!important}
+html[data-cui-plus] .cp-profile-card .studentdetails table.Grid :is(tr,td,th):not(:where(.cp-original-ecard,.cp-original-ecard *)){background:transparent!important;border:0!important;color:var(--cp-text)!important}
+html[data-cui-plus] .cp-profile-card .studentdetails table.Grid td:not(:where(.cp-original-ecard,.cp-original-ecard *)){padding:12px 14px!important;border-bottom:1px solid var(--cp-border)!important;overflow-wrap:anywhere}
+html[data-cui-plus] .cp-profile-card .studentdetails table.Grid td:nth-child(odd):not(:where(.cp-original-ecard,.cp-original-ecard *)){color:var(--cp-muted)!important;font-size:12px!important;font-weight:400!important}
+/* Data grids use explicit surface tokens instead of unrelated legacy row fills. */
+html[data-cui-plus] :is(#main-content,#cboxContent) :is(table.Grid,table.grid-table,table[id*="gv"]):not(:where(.cp-original-ecard,.cp-original-ecard *)){border:1px solid var(--cp-border)!important;border-collapse:separate!important;border-spacing:0!important;border-radius:var(--cp-radius)!important;overflow:hidden;max-width:100%}
+html[data-cui-plus] :is(#main-content,#cboxContent) :is(table.Grid,table.grid-table,table[id*="gv"]) :is(th,td):not(:where(.cp-original-ecard,.cp-original-ecard *)){border:0!important;border-bottom:1px solid var(--cp-border)!important;padding:14px 16px!important;line-height:1.5!important;vertical-align:middle!important}
+html[data-cui-plus] :is(#main-content,#cboxContent) :is(table.Grid,table.grid-table,table[id*="gv"]) tr>td:not([bgcolor]):not([style*="background" i]):not(:where(.cp-original-ecard,.cp-original-ecard *)){background:var(--cp-table,var(--cp-surface))!important;color:var(--cp-text)!important}
+html[data-cui-plus] :is(#main-content,#cboxContent) :is(table.Grid,table.grid-table,table[id*="gv"]) tr:nth-child(even)>td:not([bgcolor]):not([style*="background" i]):not(:where(.cp-original-ecard,.cp-original-ecard *)){background:var(--cp-table-alt,var(--cp-soft))!important}
+html[data-cui-plus] :is(#main-content,#cboxContent) :is(table.Grid,table.grid-table,table[id*="gv"]) :is(th,.GridHeader):not(:where(.cp-original-ecard,.cp-original-ecard *)){background:var(--cp-table-header,var(--cp-soft))!important;color:var(--cp-text)!important;font-size:12px!important;font-weight:600!important}
+html[data-cui-plus] #main-content #DataContent_gvCourseSummary tr:is([bgcolor],[style*="background" i])>td:not(:where(.cp-original-ecard,.cp-original-ecard *)){background:var(--cp-table-alt,var(--cp-soft))!important}
+html[data-cui-plus] #main-content #DataContent_gvCourseSummary tr:is([bgcolor],[style*="background" i])>td:first-child:not(:where(.cp-original-ecard,.cp-original-ecard *)){border-left:3px solid var(--cp-accent)!important}
+html[data-cui-plus] :is(#main-content,#cboxContent) :is(.content-box,.content-box-header,.content-box-content,.notification):not(:where(.cp-original-ecard,.cp-original-ecard *)){border-color:var(--cp-border)!important}
+html[data-cui-plus] #main-content :is(.content-box,.content-box-content)>br+br:not(:where(.cp-original-ecard,.cp-original-ecard *)){display:none!important}
+html[data-cui-plus] #main-content .content-box-header h3:not(:where(.cp-original-ecard,.cp-original-ecard *)){text-align:left!important;padding:20px 24px!important;margin:0!important}
+html[data-cui-plus] #main-content .notification:not(:where(.cp-original-ecard,.cp-original-ecard *)){background:var(--cp-notice,var(--cp-soft))!important;color:var(--cp-text)!important;border:1px solid var(--cp-border)!important;border-left:3px solid var(--cp-accent)!important;padding:16px 46px 16px 20px!important;box-sizing:border-box!important;max-width:100%;border-radius:var(--cp-radius)!important}
+html[data-cui-plus] #main-content .notification .close:not(:where(.cp-original-ecard,.cp-original-ecard *)){background:var(--cp-surface)!important;color:var(--cp-text)!important;border:1px solid var(--cp-border)!important;right:12px!important;top:12px!important}
+html[data-cui-plus] #colorbox :is(#cboxContent,#cboxLoadedContent,#combinedpopup,.popup-container,#popup,.popup-body,.popup-header):not(:where(.cp-original-ecard,.cp-original-ecard *)){background:var(--cp-modal,var(--cp-surface))!important;color:var(--cp-text)!important;border-color:var(--cp-border)!important}
+html[data-cui-plus] #colorbox #combinedpopup:not(:where(.cp-original-ecard,.cp-original-ecard *)){padding:24px!important;box-sizing:border-box;max-width:100%;border-radius:var(--cp-radius)!important}
+html[data-cui-plus] #colorbox #combinedpopup :is(h2,h3):not(:where(.cp-original-ecard,.cp-original-ecard *)){font:600 23px/1.35 var(--cp-heading)!important;text-align:left!important;border-color:var(--cp-border)!important;padding:0 0 18px!important;margin:0 0 18px!important}
+html[data-cui-plus] #colorbox #cboxClose:not(:where(.cp-original-ecard,.cp-original-ecard *)){background:var(--cp-soft)!important;color:var(--cp-text)!important;border:1px solid var(--cp-border)!important;border-radius:8px!important}
+html[data-cui-plus] #main-content .cp-profile-card .studentdetails table.Grid tr>td:not(:where(.cp-original-ecard,.cp-original-ecard *)){background:transparent!important;border-left:0!important;border-right:0!important}
+html[data-cui-plus] #main-content .cp-profile-card .studentdetails table.Grid tr>td:nth-child(odd):not(:where(.cp-original-ecard,.cp-original-ecard *)){color:var(--cp-muted)!important}
+html[data-cui-plus] #main-content .cp-profile-card #divStudentDetails .studentdetails table.Grid:not(:where(.cp-original-ecard,.cp-original-ecard *)){border:0!important;box-shadow:none!important}
+html[data-cui-plus] #main-content .cp-profile-card #divStudentDetails .studentdetails table.Grid tr>td:not(:where(.cp-original-ecard,.cp-original-ecard *)){background:transparent!important;border-left:0!important;border-right:0!important}
+html[data-cui-plus] #main-content .cp-profile-card #divStudentDetails .studentdetails table.Grid tr>td:nth-child(odd):not(:where(.cp-original-ecard,.cp-original-ecard *)){color:var(--cp-muted)!important}
+html[data-cui-plus] #login-content #btn_StudentSignIn.cp-auth-submit:not(:where(.cp-original-ecard,.cp-original-ecard *)){height:auto!important;min-height:48px!important}
+html[data-cui-plus] #main-content .content-box :is(center,div[align=center])>br+br:not(:where(.cp-original-ecard,.cp-original-ecard *)){display:none!important}
+@media(max-width:800px){html[data-cui-plus] .cp-profile-badge:not(:where(.cp-original-ecard,.cp-original-ecard *)){display:none}html[data-cui-plus] .cp-profile-card .studentdetails:not(:where(.cp-original-ecard,.cp-original-ecard *)){flex-basis:100%;overflow-x:visible}html[data-cui-plus] .cp-profile-card .studentdetails table.Grid:not(:where(.cp-original-ecard,.cp-original-ecard *)){min-width:0!important;width:100%!important;table-layout:fixed!important}
+html[data-cui-plus] #main-content .cp-profile-card #divStudentDetails .studentdetails table.Grid :is(tbody,tr):not(:where(.cp-original-ecard,.cp-original-ecard *)){display:block!important;width:100%!important}
+html[data-cui-plus] #main-content .cp-profile-card #divStudentDetails .studentdetails table.Grid tr:not(:where(.cp-original-ecard,.cp-original-ecard *)){display:grid!important;grid-template-columns:minmax(90px,.8fr) minmax(0,1.2fr)!important}
+html[data-cui-plus] #main-content .cp-profile-card #divStudentDetails .studentdetails table.Grid td:not(:where(.cp-original-ecard,.cp-original-ecard *)){display:block!important;min-width:0!important;width:auto!important;padding:10px 8px!important;overflow-wrap:anywhere!important}
+html[data-cui-plus] #main-content .cp-profile-card #divStudentDetails .studentdetails table.Grid td[colspan]:not(:where(.cp-original-ecard,.cp-original-ecard *)){grid-column:1/-1}html[data-cui-plus] .cp-profile-heading:not(:where(.cp-original-ecard,.cp-original-ecard *)){padding:18px}}
+}
+@media print{.cp-profile-heading:not(:where(.cp-original-ecard,.cp-original-ecard *)){display:none!important}.cp-profile-card:not(:where(.cp-original-ecard,.cp-original-ecard *)){display:contents!important}}
+
+@media screen{
+/* Account shortcuts keep sidebar-scale sizing, while retaining chosen colors,
+   style, hover and background transparency. */
+html[data-cui-plus] #sidebar #profile-links .cp-sidebar-actions:not(:where(.cp-original-ecard,.cp-original-ecard *)){display:flex!important;flex-wrap:wrap!important;align-items:center!important;justify-content:flex-start!important;gap:8px!important;margin-top:12px!important}
+html[data-cui-plus] #sidebar #profile-links .cp-sidebar-actions>a:not(:where(.cp-original-ecard,.cp-original-ecard *)){
+ display:inline-flex!important;align-items:center!important;justify-content:center!important;
+ flex:0 1 auto!important;width:auto!important;max-width:100%!important;box-sizing:border-box!important;
+ min-height:32px!important;height:auto!important;margin:0!important;padding:7px 10px!important;
+ font-family:var(--cp-font)!important;font-size:clamp(11px,calc(var(--cp-size) * .8),13px)!important;
+ font-weight:550!important;line-height:1.35!important;letter-spacing:normal!important;
+ border-radius:min(10px,var(--cp-button-radius,10px))!important;white-space:normal!important;
+}
+}
+
+/* Compact university identity and a clean, unboxed login story. */
+@media screen {
+html[data-cui-plus] #sidebar .cp-university-sidebar > center:not(:where(.cp-original-ecard,.cp-original-ecard *)){height:auto!important;min-height:0!important;line-height:0!important;margin:0!important;padding:0!important;background:none!important}
+html[data-cui-plus] #sidebar .cp-university-sidebar > center br:not(:where(.cp-original-ecard,.cp-original-ecard *)){display:none!important}
+html[data-cui-plus] #sidebar .cp-university-sidebar #logo:not(:where(.cp-original-ecard,.cp-original-ecard *)){display:block!important;padding:0!important;margin:0 auto!important;border:0!important}
+html[data-cui-plus] #sidebar .cp-university-name:not(:where(.cp-original-ecard,.cp-original-ecard *)){padding-top:10px!important}
+html[data-cui-plus] .cp-original-university-heading:not(:where(.cp-original-ecard,.cp-original-ecard *)),
+html[data-cui-plus] .cp-original-university-heading #login-top:not(:where(.cp-original-ecard,.cp-original-ecard *)),
+html[data-cui-plus] .cp-original-university-heading #login-top *:not(:where(.cp-original-ecard,.cp-original-ecard *)){background:transparent!important;background-image:none!important;box-shadow:none!important;text-shadow:none!important;border:0!important;filter:none!important;backdrop-filter:none!important}
+html[data-cui-plus] .cp-original-university-heading #login-top:not(:where(.cp-original-ecard,.cp-original-ecard *))::before,
+html[data-cui-plus] .cp-original-university-heading #login-top:not(:where(.cp-original-ecard,.cp-original-ecard *))::after,
+html[data-cui-plus] .cp-original-university-heading #login-top *:not(:where(.cp-original-ecard,.cp-original-ecard *))::before,
+html[data-cui-plus] .cp-original-university-heading #login-top *:not(:where(.cp-original-ecard,.cp-original-ecard *))::after{background:none!important;box-shadow:none!important}
+html[data-cui-plus] .cp-original-university-heading #login-top > div:not(:where(.cp-original-ecard,.cp-original-ecard *)){margin:0!important;padding:0!important}
+html[data-cui-plus] .cp-original-university-heading #login-top h1:not(:where(.cp-original-ecard,.cp-original-ecard *)){font:650 clamp(26px,2.6vw,34px)/1.25 var(--cp-heading)!important;letter-spacing:-.9px!important;margin:0 0 12px!important}
+html[data-cui-plus] .cp-original-university-heading #login-top p:not(:where(.cp-original-ecard,.cp-original-ecard *)){color:var(--cp-muted)!important}
+html[data-cui-plus] .cp-original-university-heading #login-top p:last-child:not(:where(.cp-original-ecard,.cp-original-ecard *)){font-size:11px!important;letter-spacing:2px!important;margin-top:16px!important}
+html[data-cui-plus] .cp-auth-shell:not(:where(.cp-original-ecard,.cp-original-ecard *)){gap:clamp(36px,6vw,80px);margin-top:48px;margin-bottom:32px;min-height:min(700px,calc(100vh - 130px))}
+html[data-cui-plus] .cp-login-seal:not(:where(.cp-original-ecard,.cp-original-ecard *)){margin-bottom:24px}
+html[data-cui-plus] .cp-login-purpose:not(:where(.cp-original-ecard,.cp-original-ecard *)){margin-top:28px;padding-top:24px}
+html[data-cui-plus] .cp-login-purpose h2:not(:where(.cp-original-ecard,.cp-original-ecard *)){font-size:clamp(27px,3vw,36px)!important;line-height:1.25!important;max-width:430px}
+html[data-cui-plus] #login-wrapper.cp-auth-card:not(:where(.cp-original-ecard,.cp-original-ecard *)){padding:clamp(24px,3.5vw,42px)!important;box-shadow:0 16px 48px #080e2010!important}
+@media(max-width:780px){
+html[data-cui-plus] .cp-auth-shell:not(:where(.cp-original-ecard,.cp-original-ecard *)){gap:28px;margin-top:28px;min-height:0;padding:0 20px}
+html[data-cui-plus] .cp-login-seal:not(:where(.cp-original-ecard,.cp-original-ecard *)){width:72px;height:72px;margin-bottom:16px}
+html[data-cui-plus] .cp-original-university-heading #login-top h1:not(:where(.cp-original-ecard,.cp-original-ecard *)){font-size:26px!important}
+}
+}
+
+@media screen {
+html[data-cui-plus] #login-wrapper #login-content .cp-roll-preview:not(:where(.cp-original-ecard,.cp-original-ecard *)){box-sizing:border-box!important;display:block!important;width:100%!important;min-height:0!important;height:auto!important;margin:0 0 20px!important;padding:12px 16px!important;background:color-mix(in srgb,var(--cp-accent) 9%,transparent)!important;background-image:none!important;color:var(--cp-text)!important;border:1px solid var(--cp-border)!important;border-radius:10px!important;box-shadow:none!important;text-align:center!important;font:500 14px/1.5 var(--cp-font)!important;letter-spacing:.3px!important;overflow-wrap:anywhere}
+html[data-cui-plus] #login-wrapper #login-content .cp-roll-row:not(:where(.cp-original-ecard,.cp-original-ecard *)){grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(72px,.8fr)!important;gap:10px!important;margin-bottom:24px!important}
+html[data-cui-plus] #login-wrapper #login-content .cp-roll-row :is(input,select):not(:where(.cp-original-ecard,.cp-original-ecard *)){min-width:0!important;width:100%!important;height:48px!important;padding:10px 12px!important}
+html[data-cui-plus] #login-wrapper #login-content :is(input:not([type=submit]):not([type=button]),select):focus:not(:where(.cp-original-ecard,.cp-original-ecard *)){outline:2px solid var(--cp-accent)!important;outline-offset:1px!important;border-color:var(--cp-accent)!important;box-shadow:none!important}
+}
+@media screen {
+html[data-cui-plus] #login-content .cp-field-icon:not(:where(.cp-original-ecard,.cp-original-ecard *)){display:inline-flex!important;vertical-align:middle;margin-right:8px;color:var(--cp-accent-text,var(--cp-accent))!important;line-height:1}
+html[data-cui-plus] #login-content .cp-field-icon svg:not(:where(.cp-original-ecard,.cp-original-ecard *)){display:block;width:17px;height:17px}
+html[data-cui-plus] #login-content .cp-roll-preview:not(:where(.cp-original-ecard,.cp-original-ecard *))::before{content:"";display:inline-block;vertical-align:middle;margin-right:9px;width:18px;height:18px;background:var(--cp-accent-text,var(--cp-accent));mask:url("data:image/svg+xml,%3Csvg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"black\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"%3E%3Crect x=\"2\" y=\"5\" width=\"20\" height=\"14\" rx=\"2\"/%3E%3Ccircle cx=\"9\" cy=\"11\" r=\"2\"/%3E%3Cpath d=\"M5 17a4 4 0 0 1 8 0m3-7h3m-3 4h3\"/%3E%3C/svg%3E") center/contain no-repeat}
+}
+@media screen {
+/* SIS places enrollment previews and server errors in the same host. */
+html[data-cui-plus] #login-wrapper #login-content #ErrorMessage:has(> .cp-roll-preview):not(:where(.cp-original-ecard,.cp-original-ecard *)){min-height:0!important;margin:0!important;padding:0!important;background:none!important;border:0!important;box-shadow:none!important}
+html[data-cui-plus] #login-wrapper #login-content #ErrorMessage > .notification.cp-roll-preview:not(:where(.cp-original-ecard,.cp-original-ecard *)){display:flex!important;align-items:center;justify-content:flex-start!important;gap:10px!important;margin:0 0 22px!important;padding:11px 14px!important;border:1px solid var(--cp-border)!important;border-left:3px solid var(--cp-accent)!important;border-radius:9px!important;background:color-mix(in srgb,var(--cp-accent) 7%,transparent)!important;color:var(--cp-text)!important;text-align:left!important}
+html[data-cui-plus] #login-wrapper #login-content .cp-roll-preview > div:not(:where(.cp-original-ecard,.cp-original-ecard *)){background:transparent!important;background-image:none!important;color:inherit!important;border:0!important;padding:0!important;margin:0!important;box-shadow:none!important;text-align:left!important;font:inherit!important;min-width:0;overflow-wrap:anywhere}
+html[data-cui-plus] #login-wrapper #login-content #ErrorMessage > .cp-roll-preview:not(:where(.cp-original-ecard,.cp-original-ecard *))::before{flex:0 0 18px;margin:0!important}
+}
+@media screen {
+html[data-cui-plus] :is(.cp-powered-by,.cp-auth-bottom) a:not(:where(.cp-original-ecard,.cp-original-ecard *)){color:var(--cp-accent-text,var(--cp-accent))!important;font-weight:600;text-decoration:none}
+html[data-cui-plus] :is(.cp-powered-by,.cp-auth-bottom) a:hover:not(:where(.cp-original-ecard,.cp-original-ecard *)){text-decoration:underline}
+}
+
+@media screen {
+  html[data-cui-plus] #main-content .ecard-wrap .ecard-actions > a.button {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    background: var(--cp-accent) !important;
+    color: var(--cp-button-text, #fff) !important;
+    border: 1px solid var(--cp-button-border, var(--cp-accent)) !important;
+    border-radius: var(--cp-button-radius) !important;
+    padding: var(--cp-button-pad)
+      calc(var(--cp-button-pad) * 1.5) !important;
+    font: 600 var(--cp-size)/1.35 var(--cp-font) !important;
+    text-decoration: none !important;
+    box-shadow: none !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+  }
+
+  html[data-cui-plus][data-cui-fade-button]
+  #main-content .ecard-wrap .ecard-actions > a.button {
+    background: color-mix(
+      in srgb,
+      var(--cp-accent) var(--cp-button-opacity),
+      transparent
+    ) !important;
+  }
+
+  html[data-cui-plus][data-cui-button-style="soft"]
+  #main-content .ecard-wrap .ecard-actions > a.button {
+    background: color-mix(
+      in srgb, var(--cp-accent) 18%, var(--cp-surface)
+    ) !important;
+  }
+
+  html[data-cui-plus][data-cui-fade-button][data-cui-button-style="soft"]
+  #main-content .ecard-wrap .ecard-actions > a.button {
+    background: color-mix(
+      in srgb, var(--cp-accent) var(--cp-button-tint), transparent
+    ) !important;
+  }
+
+  html[data-cui-plus][data-cui-button-style="outline"]
+  #main-content .ecard-wrap .ecard-actions > a.button {
+    background: transparent !important;
+  }
+
+  html[data-cui-plus]
+  #main-content .ecard-wrap .ecard-actions > a.button:hover {
+    background: color-mix(
+      in srgb,
+      var(--cp-button-hover, var(--cp-accent))
+        var(--cp-button-opacity, 100%),
+      transparent
+    ) !important;
+  }
+}

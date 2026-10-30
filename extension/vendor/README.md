@@ -1,0 +1,1 @@
+Selected icons: lucide-static 1.61.0 from npm, ISC license in lucide-LICENSE. Official docs https://lucide.dev/guide/static . SVG strings embedded in layout.js; no React runtime, CDN or extra permissions.

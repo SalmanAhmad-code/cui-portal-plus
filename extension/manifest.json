@@ -1,0 +1,90 @@
+{
+  "manifest_version": 3,
+  "name": "CUI Portal+",
+  "version": "0.5.6",
+  "description": "Make the COMSATS Abbottabad student portal feel like yours. Local appearance settings, no tracking.",
+  "permissions": [
+    "storage"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Customize CUI Portal+",
+    "default_icon": {
+      "16": "icons/16.png",
+      "32": "icons/32.png",
+      "128": "icons/128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/16.png",
+    "32": "icons/32.png",
+    "48": "icons/48.png",
+    "128": "icons/128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://sis.cuiatd.edu.pk/*"
+      ],
+      "js": [
+        "chart-theme.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true,
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "https://sis.cuiatd.edu.pk/*"
+      ],
+      "js": [
+        "settings.js",
+        "content.js",
+        "layout.js",
+        "dark-surfaces.js",
+        "profile-photo.js",
+        "page-adapters.js"
+      ],
+      "css": [
+        "portal.css",
+        "sis.css",
+        "redesign.css",
+        "dark-surfaces.css",
+        "custom.css",
+        "polish.css",
+        "opacity.css",
+        "profile-photo-portal.css",
+        "navigation.css",
+        "pages.css"
+      ],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'none'"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "fonts/*.ttf",
+        "assets/*",
+        "customizer.html",
+        "customizer.css",
+        "customizer.js",
+        "settings.js",
+        "media-store.js",
+        "background.html",
+        "background.css",
+        "background.js",
+        "profile-photo.html",
+        "profile-photo.css",
+        "profile-photo-frame.js",
+        "theme-store.js"
+      ],
+      "matches": [
+        "https://sis.cuiatd.edu.pk/*"
+      ]
+    }
+  ]
+}

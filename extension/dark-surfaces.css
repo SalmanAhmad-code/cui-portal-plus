@@ -1,0 +1,11 @@
+/* Screen-only; all original colors remain available on light mode, disable and print. */
+@media screen{
+ html[data-cui-plus="dark"] #main-content .cp-dark-surface:not(:where(.cp-original-ecard,.cp-original-ecard *)),
+ html[data-cui-plus="dark"] #cboxContent .cp-dark-surface:not(:where(.cp-original-ecard,.cp-original-ecard *)),
+ html[data-cui-plus="dark"] #main-content.cp-dark-surface:not(:where(.cp-original-ecard,.cp-original-ecard *)),
+ html[data-cui-plus="dark"] #cboxContent.cp-dark-surface:not(:where(.cp-original-ecard,.cp-original-ecard *)){background-color:var(--cp-surface)!important;background-image:none!important;border-color:var(--cp-border)!important;color:var(--cp-text)!important;}
+ html[data-cui-plus="dark"] :is(#main-content,#cboxContent) .cp-dark-ink:not(:where(.cp-original-ecard,.cp-original-ecard *)){color:var(--cp-text)!important;}
+ html[data-cui-plus="dark"] :is(#main-content,#cboxContent) .cp-dark-blue:not(:where(.cp-original-ecard,.cp-original-ecard *)){color:var(--cp-accent-text,#acbdff)!important;}
+ html[data-cui-plus="dark"] :is(#main-content,#cboxContent) .cp-dark-red:not(:where(.cp-original-ecard,.cp-original-ecard *)){color:#ffadb9!important;}
+ html[data-cui-plus="dark"] :is(#main-content,#cboxContent) .cp-dark-amber:not(:where(.cp-original-ecard,.cp-original-ecard *)){color:#f6d28b!important;}
+}

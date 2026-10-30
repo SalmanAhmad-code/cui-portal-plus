@@ -1,0 +1,33 @@
+/* Appearance layer only. No elements, forms, navigation or student records are replaced.
+   Known framework classes are best-effort adapters until authenticated DOM is available. */
+@media screen {
+ html[data-cui-plus]:not(:where(.cp-original-ecard,.cp-original-ecard *)){--cp-bg:#f4f6fb;--cp-surface:#fff;--cp-soft:#eef1f8;--cp-text:#202b43;--cp-muted:#52617b;--cp-border:#dce2ed;--cp-accent:#4f46e5;--cp-font:system-ui,sans-serif;--cp-size:15px;--cp-pad:14px;--cp-radius:12px;--cp-width:1280px;color-scheme:light; background:var(--cp-bg)!important;}
+ html[data-cui-plus="dark"]:not(:where(.cp-original-ecard,.cp-original-ecard *)){--cp-bg:#101521;--cp-surface:#1a2232;--cp-soft:#242f43;--cp-text:#e6ebf5;--cp-muted:#b2bfd4;--cp-border:#39465e;color-scheme:dark;}
+ html[data-cui-plus] body:not(:where(.cp-original-ecard,.cp-original-ecard *)){background:var(--cp-bg)!important;color:var(--cp-text)!important;font-family:var(--cp-font)!important;font-size:var(--cp-size)!important;line-height:1.55;}
+ html[data-cui-plus] :is(input,select,textarea,button):not(:where(.cp-original-ecard,.cp-original-ecard *)){font-family:var(--cp-font)!important;}
+ html[data-cui-plus] :is(h1,h2,h3,h4,h5,h6,label,legend):not(:where(.cp-original-ecard,.cp-original-ecard *)){color:var(--cp-text)!important;}
+ html[data-cui-plus] :is(h1,h2,h3):not(:where(.cp-original-ecard,.cp-original-ecard *)){letter-spacing:-.025em;line-height:1.25;}
+ html[data-cui-plus] a:not(.btn):not([role="button"]):not(:where(.cp-original-ecard,.cp-original-ecard *)){color:var(--cp-accent)!important;text-underline-offset:3px;}
+ html[data-cui-plus="dark"] a:not(.btn):not([role="button"]):not(:where(.cp-original-ecard,.cp-original-ecard *)){color:#a9c7ff!important;}
+ html[data-cui-plus] :is(.panel,.card,.well,.box,.modal-content,.dropdown-menu):not(:where(.cp-original-ecard,.cp-original-ecard *)){background:var(--cp-surface)!important;color:var(--cp-text)!important;border:1px solid var(--cp-border)!important;border-radius:var(--cp-radius)!important;box-shadow:0 4px 20px #10182806!important;}
+ html[data-cui-plus] :is(.panel-body,.card-body,.box-body):not(:where(.cp-original-ecard,.cp-original-ecard *)){padding:var(--cp-pad)!important;}
+ html[data-cui-plus] :is(.panel-heading,.card-header,.box-header,.modal-header):not(:where(.cp-original-ecard,.cp-original-ecard *)){background:var(--cp-soft)!important;color:var(--cp-text)!important;border-color:var(--cp-border)!important;padding:var(--cp-pad)!important;border-radius:var(--cp-radius) var(--cp-radius) 0 0!important;}
+ html[data-cui-plus] :is(.content-wrapper,.right-side,main):not(:where(.cp-original-ecard,.cp-original-ecard *)){background:var(--cp-bg)!important;color:var(--cp-text)!important;}
+ html[data-cui-plus] :is(.container,.container-fluid):not(:where(.cp-original-ecard,.cp-original-ecard *)){max-width:var(--cp-width)!important;}
+ html[data-cui-plus][data-cui-wide] :is(.container,.container-fluid):not(:where(.cp-original-ecard,.cp-original-ecard *)){width:auto!important;}
+ html[data-cui-plus] :is(.navbar,.main-header,.main-sidebar,.sidebar):not(:where(.cp-original-ecard,.cp-original-ecard *)){background:var(--cp-surface)!important;color:var(--cp-text)!important;border-color:var(--cp-border)!important;}
+ html[data-cui-plus] :is(.navbar,.main-header,.main-sidebar,.sidebar) a:not(.btn):not(:where(.cp-original-ecard,.cp-original-ecard *)){color:var(--cp-text)!important;}
+ html[data-cui-plus] :is(.navbar,.main-header,.main-sidebar,.sidebar) a:not(.btn):hover:not(:where(.cp-original-ecard,.cp-original-ecard *)){background:var(--cp-soft)!important;}
+ html[data-cui-plus] :is(table.Grid,table.grid-table,table.table):not(:where(.cp-original-ecard,.cp-original-ecard *)){border-collapse:separate!important;border-spacing:0!important;border-color:var(--cp-border)!important;color:var(--cp-text)!important;font-size:var(--cp-size)!important;}
+ html[data-cui-plus] :is(table.Grid,table.grid-table,table.table) :is(td,th):not(:where(.cp-original-ecard,.cp-original-ecard *)){border-color:var(--cp-border)!important;padding:var(--cp-pad)!important;}
+ html[data-cui-plus] :is(table.Grid,table.grid-table,table.table) th:not(:where(.cp-original-ecard,.cp-original-ecard *)){background:var(--cp-soft)!important;color:var(--cp-text)!important;font-weight:650;}
+ html[data-cui-plus] :is(table.Grid,table.grid-table,table.table) td:not([bgcolor]):not([style*="background" i]):not(:where(.cp-original-ecard,.cp-original-ecard *)){background:var(--cp-surface)!important;color:var(--cp-text)!important;}
+ html[data-cui-plus] :is(table.Grid,table.grid-table,table.table) tbody tr:nth-child(even):not([bgcolor]):not([style*="background" i])>td:not([bgcolor]):not([style*="background" i]):not(:where(.cp-original-ecard,.cp-original-ecard *)){background:var(--cp-soft)!important;}
+ html[data-cui-plus] :is(input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]):not([type="submit"]):not([type="button"]):not([type="image"]),select,textarea):not(:where(.cp-original-ecard,.cp-original-ecard *)){background:var(--cp-surface)!important;color:var(--cp-text)!important;border:1px solid var(--cp-border)!important;border-radius:calc(var(--cp-radius) * .6)!important;padding:8px 11px!important;max-width:100%;}
+ html[data-cui-plus] :is(button,.btn,input[type="submit"],input[type="button"]):not(:where(.cp-original-ecard,.cp-original-ecard *)){border-radius:calc(var(--cp-radius) * .65)!important;}
+ html[data-cui-plus] :is(.btn-primary,button[type="submit"],input[type="submit"]):not(:where(.cp-original-ecard,.cp-original-ecard *)){background:var(--cp-accent)!important;color:white!important;border-color:var(--cp-accent)!important;}
+ html[data-cui-plus] :is(.text-muted,small.help-block):not(:where(.cp-original-ecard,.cp-original-ecard *)){color:var(--cp-muted)!important;}
+ html[data-cui-plus] :is(a,button,input,select,textarea,[role="button"]):focus-visible:not(:where(.cp-original-ecard,.cp-original-ecard *)){outline:3px solid var(--cp-accent)!important;outline-offset:3px!important;}
+ html[data-cui-plus] input:not(:where(.cp-original-ecard,.cp-original-ecard *))::placeholder,html[data-cui-plus] textarea:not(:where(.cp-original-ecard,.cp-original-ecard *))::placeholder{color:var(--cp-muted)!important;opacity:1;}
+ html[data-cui-plus][data-cui-motion] *:not(:where(.cp-original-ecard,.cp-original-ecard *)),html[data-cui-plus][data-cui-motion] *:not(:where(.cp-original-ecard,.cp-original-ecard *))::before,html[data-cui-plus][data-cui-motion] *:not(:where(.cp-original-ecard,.cp-original-ecard *))::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important;}
+}
