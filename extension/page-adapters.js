@@ -42,6 +42,96 @@
     if (value) node.textContent = value;
     return node;
   };
+  const encoder = new TextEncoder();
+  let crcTable = null;
+  const bytes = (value) =>
+    value instanceof Uint8Array ? value : new Uint8Array(value);
+  const write16 = (view, offset, value) =>
+    view.setUint16(offset, value & 0xffff, true);
+  const write32 = (view, offset, value) =>
+    view.setUint32(offset, value >>> 0, true);
+  const crc32 = (value) => {
+    if (!crcTable) {
+      crcTable = new Uint32Array(256);
+      for (let i = 0; i < 256; i++) {
+        let code = i;
+        for (let bit = 0; bit < 8; bit++)
+          code = code & 1 ? 0xedb88320 ^ (code >>> 1) : code >>> 1;
+        crcTable[i] = code >>> 0;
+      }
+    }
+    let crc = 0xffffffff;
+    for (const byte of value) crc = crcTable[(crc ^ byte) & 0xff] ^ (crc >>> 8);
+    return (crc ^ 0xffffffff) >>> 0;
+  };
+  const dosTime = (date) =>
+    ((date.getHours() & 0x1f) << 11) |
+    ((date.getMinutes() & 0x3f) << 5) |
+    ((Math.floor(date.getSeconds() / 2) & 0x1f) >>> 0);
+  const dosDate = (date) =>
+    (((Math.max(1980, date.getFullYear()) - 1980) & 0x7f) << 9) |
+    (((date.getMonth() + 1) & 0x0f) << 5) |
+    (date.getDate() & 0x1f);
+  const zipStore = (entries) => {
+    const local = [];
+    const central = [];
+    let offset = 0;
+    for (const entry of entries) {
+      const name = encoder.encode(entry.name);
+      const data = bytes(entry.data);
+      const localHeader = new ArrayBuffer(30);
+      const localView = new DataView(localHeader);
+      write32(localView, 0, 0x04034b50);
+      write16(localView, 4, 20);
+      write16(localView, 6, 0);
+      write16(localView, 8, 0);
+      write16(localView, 10, dosTime(entry.date));
+      write16(localView, 12, dosDate(entry.date));
+      write32(localView, 14, entry.crc);
+      write32(localView, 18, data.byteLength);
+      write32(localView, 22, data.byteLength);
+      write16(localView, 26, name.byteLength);
+      write16(localView, 28, 0);
+      local.push(localHeader, name, data);
+      const centralHeader = new ArrayBuffer(46);
+      const centralView = new DataView(centralHeader);
+      write32(centralView, 0, 0x02014b50);
+      write16(centralView, 4, 20);
+      write16(centralView, 6, 20);
+      write16(centralView, 8, 0);
+      write16(centralView, 10, 0);
+      write16(centralView, 12, dosTime(entry.date));
+      write16(centralView, 14, dosDate(entry.date));
+      write32(centralView, 16, entry.crc);
+      write32(centralView, 20, data.byteLength);
+      write32(centralView, 24, data.byteLength);
+      write16(centralView, 28, name.byteLength);
+      write16(centralView, 30, 0);
+      write16(centralView, 32, 0);
+      write16(centralView, 34, 0);
+      write16(centralView, 36, 0);
+      write32(centralView, 38, 0);
+      write32(centralView, 42, offset);
+      central.push(centralHeader, name);
+      offset += 30 + name.byteLength + data.byteLength;
+    }
+    const centralOffset = offset;
+    const centralSize = central.reduce(
+      (size, part) => size + bytes(part).byteLength,
+      0,
+    );
+    const end = new ArrayBuffer(22);
+    const endView = new DataView(end);
+    write32(endView, 0, 0x06054b50);
+    write16(endView, 4, 0);
+    write16(endView, 6, 0);
+    write16(endView, 8, entries.length);
+    write16(endView, 10, entries.length);
+    write32(endView, 12, centralSize);
+    write32(endView, 16, centralOffset);
+    write16(endView, 20, 0);
+    return new Blob([...local, ...central, end], { type: "application/zip" });
+  };
   function destroy() {
     for (const action of undo.reverse()) action();
     undo = [];
@@ -275,6 +365,199 @@
       });
     }
   }
+  function courseContents(main) {
+    if (!/courseportalcontentssummary\.aspx$/i.test(location.pathname)) return;
+    if (main.querySelector(".cp-bulk-toolbar")) return;
+    const sanitize = (name) =>
+      (name || "")
+        .replace(/[<>:"/\\|?*\x00-\x1f]/g, " ")
+        .replace(/\s+/g, " ")
+        .replace(/\.+$/g, "")
+        .trim() || "content";
+    const extension = (response, fallback) => {
+      const fromName = (name) => {
+        const match = /\.([a-z0-9]{1,12})$/i.exec(name || "");
+        return match ? "." + match[1].toLowerCase() : "";
+      };
+      const disposition =
+        response.headers.get("content-disposition") ||
+        response.headers.get("Content-Disposition") ||
+        "";
+      const starred = /filename\*=UTF-8''([^;]+)/i.exec(disposition);
+      const quoted = /filename="([^"]+)"/i.exec(disposition);
+      const plain = /filename=([^;]+)/i.exec(disposition);
+      const hintSource = starred?.[1] || quoted?.[1] || plain?.[1] || "";
+      let hinted = hintSource;
+      try {
+        hinted = decodeURIComponent(hintSource);
+      } catch {}
+      const fromHint = fromName(hinted);
+      if (fromHint) return fromHint;
+      const type = (response.headers.get("content-type") || "")
+        .split(";")[0]
+        .trim()
+        .toLowerCase();
+      const map = {
+        "application/pdf": ".pdf",
+        "application/msword": ".doc",
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
+          ".docx",
+        "application/vnd.ms-powerpoint": ".ppt",
+        "application/vnd.openxmlformats-officedocument.presentationml.presentation":
+          ".pptx",
+        "application/vnd.ms-excel": ".xls",
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet":
+          ".xlsx",
+        "application/zip": ".zip",
+        "text/plain": ".txt",
+        "image/jpeg": ".jpg",
+        "image/png": ".png",
+        "image/webp": ".webp",
+        "image/gif": ".gif",
+      };
+      return map[type] || fromName(fallback) || "";
+    };
+    const unique = (name, used) => {
+      if (!used.has(name)) {
+        used.add(name);
+        return name;
+      }
+      const parsed = /^(.*?)(\.[^.]+)?$/.exec(name) || [];
+      const base = parsed[1] || name;
+      const ext = parsed[2] || "";
+      let n = 2;
+      let candidate = `${base} (${n})${ext}`;
+      while (used.has(candidate)) candidate = `${base} (${++n})${ext}`;
+      used.add(candidate);
+      return candidate;
+    };
+    let table = main.querySelector("#DataContent_gvPortalSummary");
+    let header = table?.rows?.[0] || null;
+    if (!table || !header) {
+      for (const candidate of main.querySelectorAll("table")) {
+        const row = [...candidate.rows].find((entry) => {
+          const labels = [...entry.cells].map(text);
+          return (
+            labels.some((label) => /download\s*files?/i.test(label)) &&
+            labels.some((label) => /upload\s*date/i.test(label))
+          );
+        });
+        if (!row) continue;
+        table = candidate;
+        header = row;
+        break;
+      }
+    }
+    if (!table || !header) return;
+    const labels = [...header.cells].map(text);
+    const titleIndex = Math.max(0, labels.findIndex((label) => /title/i.test(label)));
+    const rows = [...table.rows]
+      .filter((row) => row !== header && row.cells.length)
+      .map((row) => ({
+        row,
+        link:
+          row.querySelector('a[href*="DownloadFile.aspx" i]') ||
+          row.cells[
+            labels.findIndex((label) => /download\s*files?/i.test(label))
+          ]?.querySelector('a[href*="DownloadFile.aspx" i]'),
+      }))
+      .filter((entry) => entry.link);
+    if (!rows.length) return;
+    const toolbar = own(el("div", "cp-bulk-toolbar"), table.parentNode, table);
+    const count = own(el("span", "cp-bulk-count", "0 selected"), toolbar);
+    const button = own(
+      el("button", "cp-bulk-download", "Download selected as ZIP"),
+      toolbar,
+    );
+    button.type = "button";
+    button.disabled = true;
+    const status = own(el("span", "cp-bulk-status"), toolbar);
+    status.setAttribute("role", "status");
+    status.setAttribute("aria-live", "polite");
+    const checkHead = own(el("th", "cp-bulk-check-col"), header, header.firstChild);
+    const selectAll = own(el("input"), checkHead);
+    selectAll.type = "checkbox";
+    selectAll.setAttribute("aria-label", "Select all course contents");
+    const entries = rows.map(({ row, link }) => {
+      const cell = own(el("td", "cp-bulk-check-col"), row, row.firstChild);
+      const box = own(el("input"), cell);
+      box.type = "checkbox";
+      const titleCell =
+        row.cells[Math.min(row.cells.length - 1, titleIndex + 1)] || row.cells[1];
+      box.setAttribute(
+        "aria-label",
+        `Select ${sanitize(text(titleCell)) || "course content"}`,
+      );
+      return { row, link, box, titleCell };
+    });
+    const sync = () => {
+      const selected = entries.filter((entry) => entry.box.checked).length;
+      count.textContent = `${selected} selected`;
+      button.disabled = !selected;
+      selectAll.indeterminate = selected > 0 && selected < entries.length;
+      selectAll.checked = selected === entries.length;
+    };
+    const onSelectAll = () => {
+      for (const entry of entries) entry.box.checked = selectAll.checked;
+      sync();
+    };
+    const onDownload = async () => {
+      const picked = entries.filter((entry) => entry.box.checked);
+      if (!picked.length) {
+        status.textContent = "Select at least one file.";
+        return;
+      }
+      button.disabled = true;
+      selectAll.disabled = true;
+      for (const entry of entries) entry.box.disabled = true;
+      status.textContent = "Preparing ZIP…";
+      try {
+        const files = [];
+        const used = new Set();
+        for (let i = 0; i < picked.length; i++) {
+          status.textContent = `Downloading ${i + 1}/${picked.length}…`;
+          const entry = picked[i];
+          const response = await fetch(entry.link.href, { credentials: "include" });
+          if (!response.ok)
+            throw new Error(`Download failed (${response.status})`);
+          const data = new Uint8Array(await response.arrayBuffer());
+          const base = sanitize(text(entry.titleCell)) || `content-${i + 1}`;
+          const ext = extension(response, entry.link.href);
+          const name = unique(base + ext, used);
+          files.push({
+            name,
+            data,
+            crc: crc32(data),
+            date: new Date(),
+          });
+        }
+        const blob = zipStore(files);
+        const url = URL.createObjectURL(blob);
+        const anchor = own(el("a"), document.body);
+        anchor.href = url;
+        anchor.download = "course-contents.zip";
+        anchor.click();
+        URL.revokeObjectURL(url);
+        status.textContent = `Downloaded ${picked.length} files.`;
+      } catch (error) {
+        status.textContent = `Could not build ZIP: ${error.message || "Download failed."}`;
+      } finally {
+        selectAll.disabled = false;
+        for (const entry of entries) entry.box.disabled = false;
+        sync();
+      }
+    };
+    selectAll.addEventListener("change", onSelectAll);
+    button.addEventListener("click", onDownload);
+    for (const entry of entries) entry.box.addEventListener("change", sync);
+    undo.push(() => {
+      selectAll.removeEventListener("change", onSelectAll);
+      button.removeEventListener("click", onDownload);
+      for (const entry of entries) entry.box.removeEventListener("change", sync);
+    });
+    sync();
+  }
+
   function timetable(main) {
     if (!/timetable\.aspx$/i.test(location.pathname)) return;
     mark(main, "cp-timetable-page");
@@ -647,7 +930,15 @@
     if (mounted && !mounted.isConnected) destroy();
     if (!main) return;
     mounted = main;
-    for (const adapter of [ecard, grids, files, timetable, panels, projects]) {
+    for (const adapter of [
+      ecard,
+      grids,
+      files,
+      courseContents,
+      timetable,
+      panels,
+      projects,
+    ]) {
       const before = undo.length;
       try {
         adapter(main);
