@@ -535,7 +535,14 @@
         const url = URL.createObjectURL(blob);
         const anchor = own(el("a"), document.body);
         anchor.href = url;
-        anchor.download = "course-contents.zip";
+        const selectedCourse = text(
+          main.querySelector("#DataContent_ddlCourses, select[name*='ddlCourses' i]")
+            ?.selectedOptions?.[0],
+        ).trim();
+        anchor.download =
+          selectedCourse && !/^-select course-$/i.test(selectedCourse)
+            ? `${sanitize(selectedCourse)}.zip`
+            : "course-contents.zip";
         anchor.click();
         URL.revokeObjectURL(url);
         status.textContent = `Downloaded ${picked.length} files.`;
