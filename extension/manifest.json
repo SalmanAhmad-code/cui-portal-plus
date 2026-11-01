@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "CUI Portal+",
-  "version": "0.5.7",
+  "version": "0.5.8",
   "description": "Make the COMSATS Abbottabad student portal feel like yours. Local appearance settings, no tracking.",
   "permissions": [
     "storage"
