@@ -5,6 +5,8 @@
  const media=matchMedia('(prefers-color-scheme: dark)');
  const setStatus=text=>{if(status)status.textContent=text;};
  const fields=['font','density','fontSize','radius','wide','background','backgroundFit','backgroundDim','reduceMotion','glass','glassOpacity','glassBlur','buttonStyle','buttonRadius','buttonPadding','profileBorderWidth','profileBorderRadius','profileBorderStyle','navOpacity','navHoverOpacity','navActiveOpacity','navRadius','navPadding','navBorderWidth','resultBorderWidth','scoreHeight','scoreRadius','scoreOverride'];
+ const IMAGE_TYPES=new Set(['image/png','image/jpeg','image/webp','image/gif']);
+ const VIDEO_TYPES=new Set(['video/mp4','video/webm']);
  const names={background:'Page background',container:'Cards & containers',sidebar:'Sidebar',sidebarText:'Sidebar text',text:'Main text',muted:'Secondary text',button:'Buttons & accent',buttonText:'Button text',border:'Borders',header:'Container headers',input:'Form fields',buttonHover:'Button hover',buttonBorder:'Button border',active:'Active navigation',activeText:'Active navigation text',table:'Table rows',tableAlt:'Alternate rows',tableHeader:'Table headers',notice:'Notices',modal:'Dialogs',profileBorder:'Profile picture border',navBackground:'Normal background',navText:'Normal text',navHover:'Hover background',navHoverText:'Hover text',navBorder:'Navigation border',resultBorder:'Result summary border',scoreTrack:'Marks bar track',scoreFill:'Custom marks fill'};
  const opacityNames={cardOpacity:'Cards & containers',sidebarOpacity:'Sidebar',buttonOpacity:'Buttons',fieldOpacity:'Form fields',tableOpacity:'Table rows',headerOpacity:'Container headers',noticeOpacity:'Notices',modalOpacity:'Dialogs',profileOpacity:'Academic profile',resultOpacity:'Result summary'};
  const palettePresets={
@@ -171,19 +173,26 @@
  }
 
  async function validate(file){
-  const url=URL.createObjectURL(file);
-  try{await new Promise((resolve,reject)=>{
-   const el=document.createElement(file.type.startsWith('video/')?'video':'img');
-   const timer=setTimeout(()=>{el.removeAttribute('src');reject(new Error('Media timed out'));},12000);
-   const done=()=>{clearTimeout(timer);resolve();};el.onerror=()=>{clearTimeout(timer);reject(new Error('Unsupported media'));};
-   if(el.tagName==='VIDEO'){el.preload='metadata';el.onloadedmetadata=done;}else el.onload=done;el.src=url;
-  });}finally{URL.revokeObjectURL(url);}
+  if(!IMAGE_TYPES.has(file.type)&&!VIDEO_TYPES.has(file.type))throw new Error('Unsupported media');
+  if(IMAGE_TYPES.has(file.type)){
+   const bitmap=await createImageBitmap(file);
+   bitmap.close();
+   return;
+  }
+  await new Promise((resolve,reject)=>{
+   const reader=new FileReader();
+   const timer=setTimeout(()=>{reader.abort();reject(new Error('Media timed out'));},12000);
+   reader.onerror=()=>{clearTimeout(timer);reject(new Error('Unsupported media'));};
+   reader.onabort=()=>{clearTimeout(timer);reject(new Error('Media timed out'));};
+   reader.onload=()=>{clearTimeout(timer);resolve();};
+   reader.readAsArrayBuffer(file.slice(0,1024*1024));
+  });
  }
 
  async function uploadFile(file,key){
   const profile=key==='profile',input=$(profile?'profile-upload':'upload');
   if(!file||!input||input.disabled)return;
-  const types=['image/png','image/jpeg','image/webp','image/gif',...(profile?[]:['video/mp4','video/webm'])];
+  const types=[...IMAGE_TYPES,...(profile?[]:[...VIDEO_TYPES])];
   const limit=profile?10:100;
   if(!types.includes(file.type)||file.size>limit*1048576||file.size===0){setStatus(profile?'Choose a supported profile image under 10 MB.':'Choose a supported image or video under 100 MB.');input.value='';return;}
   const zone=$(profile?'profile-drop':'bg-drop');
