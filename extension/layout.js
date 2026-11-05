@@ -512,7 +512,7 @@
       element(
         "div",
         "cp-powered-by",
-        'Powered by <a href="https://comsatshub.vercel.app/" target="_blank" rel="noopener noreferrer">ComsatsHub</a>',
+        'Powered by <a href="https://comsatshub.vercel.app/" target="_blank" rel="noopener noreferrer">ComsatsHub</a> · CUI Portal+',
       ),
       footer,
     );

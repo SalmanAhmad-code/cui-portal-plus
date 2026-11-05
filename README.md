@@ -1,4 +1,4 @@
-# CUI Portal+ · v0.5.8
+# CUI Portal+ · v0.5.8.1
 
 A complete visual makeover for the COMSATS Abbottabad student portal at https://sis.cuiatd.edu.pk/ . This version follows the public ComsatsHub design direction: soft lavender surfaces, royal blue actions, Space Grotesk headings, IBM Plex Sans body text, clean white cards, and generous spacing.
 
@@ -93,7 +93,7 @@ Project files:
 
 Unofficial student extension. Not affiliated with or endorsed by COMSATS University. Inspired by ComsatsHub's public design; no ComsatsHub service integration or account access is added.
 
-## v0.5.8
+## v0.5.8.1
 
 Appearance studio redesign:
 
