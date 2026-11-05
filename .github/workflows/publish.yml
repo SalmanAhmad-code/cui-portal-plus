@@ -1,0 +1,35 @@
+name: Publish to Chrome Web Store
+
+on:
+  push:
+    tags:
+      - 'v*' # Triggers workflow when pushing a version tag (e.g., v1.0.0)
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install & Build
+        run: |
+          npm ci
+          npm run build
+
+      - name: Create Zip Archive
+        run: zip -r extension.zip dist/ # Adjust 'dist/' to your output folder name
+
+      - name: Upload & Publish to Chrome Web Store
+        uses: wdzeng/chrome-extension@v2
+        with:
+          extension-id: ${{ secrets.EXTENSION_ID }}
+          zip-path: extension.zip
+          client-id: ${{ secrets.CLIENT_ID }}
+          client-secret: ${{ secrets.CLIENT_SECRET }}
+          refresh-token: ${{ secrets.REFRESH_TOKEN }}
